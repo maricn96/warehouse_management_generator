@@ -26,7 +26,7 @@ public class MyPlugin extends com.nomagic.magicdraw.plugins.Plugin {
 
 		String rootDir = System.getProperty("user.home") + File.separator + "magacinsko_poslovanje";
 		String resourcesDir = System.getProperty("user.home") + File.separator + "magacinsko_poslovanje" + File.separator + "src" + File.separator + "main" + File.separator + "resources";
-		String javaDir = System.getProperty("user.home") + File.separator + "magacinsko_poslovanje" + File.separator + "src" + File.separator + "main" + File.separator + "java" + File.separator + "mbrs" + File.separator + "tim9";
+		String javaDir = System.getProperty("user.home") + File.separator + "magacinsko_poslovanje" + File.separator + "src" + File.separator + "main" + File.separator + "java";
 		
 		GeneratorOptions ejbOptions = new GeneratorOptions(javaDir, "ejbclass", "templates", "{0}.java", true, "model"); 
 		ProjectOptions.getProjectOptions().getGeneratorOptions().put("EJBGenerator", ejbOptions); 

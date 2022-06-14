@@ -1,7 +1,5 @@
 package ${class.typePackage};
 
-import java.util.List;
-
 import org.springframework.beans.factory.annotation.Autowired;
 import mbrs.tim9.repository.${class.name}Repository;
 import org.springframework.stereotype.Service;
@@ -22,28 +20,41 @@ public class ${class.name}ServiceImpl implements ${class.name}Service {
     ${method.visibility} ${method.returnType.name}<${class.name}> ${method.name}(<#list method.parameters as parameter>${parameter.type.name} ${parameter.name}<#sep>, </#sep></#list>){
         return ${class.name?uncap_first}Repository.findAll();
     }
+    
 	    </#if>
-
 	<#else>
 		<#if method.name == "save">
  	@Override
     ${method.visibility} ${method.returnType.name} ${method.name}(<#list method.parameters as parameter>${parameter.type.name} ${parameter.name}<#sep>, </#sep></#list>){
-        ${class.name?uncap_first}Repository.save(${class.name?uncap_first});
+        return ${class.name?uncap_first}Repository.save(${class.name?uncap_first});
     }
-		</#if>		
+    
+		</#if>
+		<#if method.name == "update">
+ 	@Override
+    ${method.visibility} ${method.returnType.name} ${method.name}(<#list method.parameters as parameter>${parameter.type.name?cap_first} ${parameter.name}<#sep>, </#sep></#list>){
+    	${class.name} ${class.name?uncap_first}ToSave = ${class.name?uncap_first}Repository.findById(id).get();
+    	
+    	<#list properties as property>${class.name?uncap_first}ToSave.set${property.name?cap_first}(${class.name?uncap_first}.get${property.name?cap_first}())<#sep>;
+    	</#sep></#list>;
+        return ${class.name?uncap_first}Repository.save(${class.name?uncap_first}ToSave);
+    }
+    
+		</#if>	
 		<#if method.name == "delete">
  	@Override
-    ${method.visibility} ${method.returnType.name} ${method.name}(<#list method.parameters as parameter>${parameter.type.name} ${parameter.name}<#sep>, </#sep></#list>){
-        ${class.name?uncap_first}Repository.delete(${class.name?uncap_first});
+    ${method.visibility} ${method.returnType.name} ${method.name}(Long id){
+        ${class.name?uncap_first}Repository.deleteById(id);
     }
+    
 		</#if>		
 		<#if method.name == "getById">
  	@Override
-    ${method.visibility} ${method.returnType.name} ${method.name}(<#list method.parameters as parameter>${parameter.type.name?cap_first} ${parameter.name}<#sep>, </#sep></#list>){
+    ${method.visibility} ${method.returnType.name} ${method.name}(<#list method.parameters as parameter>${parameter.type.name?cap_first} ${parameter.name?uncap_first}<#sep>, </#sep></#list>){
         return ${class.name?uncap_first}Repository.findById(id).get();
     }
+    
 		</#if>
-				
 	</#if>
 </#list>
 }

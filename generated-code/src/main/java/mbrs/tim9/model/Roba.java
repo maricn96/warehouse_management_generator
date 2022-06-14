@@ -3,8 +3,9 @@ package mbrs.tim9.model;
 import javax.persistence.*;
 import java.util.*;
 import org.springframework.format.annotation.DateTimeFormat;
-import mbrs.tim9.enums.MagacinskaKartica;
-import mbrs.tim9.enums.StavkaPrometnogDokumenta;
+import mbrs.tim9.enums.JedinicaEnum;
+import mbrs.tim9.enums.KategorijaEnum;
+import mbrs.tim9.enums.VrstaPrometaEnum;
 
 @Entity
 @Table

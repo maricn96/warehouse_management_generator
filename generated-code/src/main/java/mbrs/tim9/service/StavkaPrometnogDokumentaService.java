@@ -10,9 +10,9 @@ public interface StavkaPrometnogDokumentaService {
 	
     Collection<StavkaPrometnogDokumenta> getAll();
     
-    StavkaPrometnogDokumenta save(StavkaPrometnogDokumenta stavka);
+    StavkaPrometnogDokumenta save(StavkaPrometnogDokumenta stavkaPrometnogDokumenta);
 	
-    StavkaPrometnogDokumenta update(Long id, StavkaPrometnogDokumenta stavka);
+    StavkaPrometnogDokumenta update(Long id, StavkaPrometnogDokumenta stavkaPrometnogDokumenta);
 	
     void delete(Long id);
 	

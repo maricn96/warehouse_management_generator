@@ -8,9 +8,7 @@ import org.springframework.http.HttpStatus;
 import mbrs.tim9.model.MagacinskaKartica;
 import mbrs.tim9.model.StavkaPrometnogDokumenta;
 import mbrs.tim9.model.Roba;
-import org.springframework.ui.Model;
 import java.util.Collection;
-import java.util.List;
 
 import mbrs.tim9.service.MagacinskaKarticaService;
 import mbrs.tim9.service.StavkaPrometnogDokumentaService;
@@ -28,7 +26,7 @@ public class MagacinskaKarticaController{
 	@Autowired
 	private RobaService robaService;
 	
-	@GetMapping("")
+	@GetMapping
 	public ResponseEntity<Collection<MagacinskaKartica>> getAll() {
 		return new ResponseEntity<Collection<MagacinskaKartica>>(magacinskaKarticaService.getAll(), HttpStatus.OK);
     }
@@ -41,27 +39,26 @@ public class MagacinskaKarticaController{
     @PutMapping("/{id}")
     public ResponseEntity<?> update(@PathVariable("/id") Long id, @RequestBody MagacinskaKartica magacinskaKartica) {
         try {
-        	MagacinskaKartica magacinskaKartica = magacinskaKarticaService.save(magacinskaKartica);
-            return new ResponseEntity<MagacinskaKartica>(magacinskaKartica, HttpStatus.OK);
+        	MagacinskaKartica magacinskaKarticaUpdated = magacinskaKarticaService.save(magacinskaKartica);
+            return new ResponseEntity<MagacinskaKartica>(magacinskaKarticaUpdated, HttpStatus.OK);
         }
         catch (Exception e){
-            return new ResponseEntity<MagacinskaKartica>(e.getStackTrace(), HttpStatus.BAD_REQUEST);
+            return new ResponseEntity<>(e.getStackTrace(), HttpStatus.BAD_REQUEST);
         }
     }
       
-    @PostMapping("")
-    public ResponseEntity<MagacinskaKartica> add(@RequestBody MagacinskaKartica magacinskaKartica){
-    		MagacinskaKartica magacinskaKartica = magacinskaKarticaService.save(magacinskaKartica);
-            return new ResponseEntity<MagacinskaKartica>(magacinskaKartica, HttpStatus.OK);
+    @PostMapping
+    public ResponseEntity<MagacinskaKartica> save(@RequestBody MagacinskaKartica magacinskaKartica){
+    		MagacinskaKartica magacinskaKarticaSaved = magacinskaKarticaService.save(magacinskaKartica);
+            return new ResponseEntity<MagacinskaKartica>(magacinskaKarticaSaved, HttpStatus.OK);
     }
     
     @DeleteMapping("/{id}")
-    public ResponseEntity<> delete(@PathVariable("id") Long id) {
-    	MagacinskaKartica magacinskaKartica = magacinskaKarticaService.getById(id);
+    public ResponseEntity<String> delete(@PathVariable("id") Long id) {
     	
     	try {
-    		magacinskaKarticaService.delete(magacinskaKartica);
-    		return new ResponseEntity<>(magacinskaKartica, HttpStatus.OK);
+    		magacinskaKarticaService.delete(id);
+    		return new ResponseEntity<>(HttpStatus.OK);
     	}
     	catch(Exception e) {
             return new ResponseEntity<>(HttpStatus.INTERNAL_SERVER_ERROR);

@@ -8,9 +8,7 @@ import org.springframework.http.HttpStatus;
 import mbrs.tim9.model.Roba;
 import mbrs.tim9.model.MagacinskaKartica;
 import mbrs.tim9.model.StavkaPrometnogDokumenta;
-import org.springframework.ui.Model;
 import java.util.Collection;
-import java.util.List;
 
 import mbrs.tim9.service.RobaService;
 import mbrs.tim9.service.MagacinskaKarticaService;
@@ -28,7 +26,7 @@ public class RobaController{
 	@Autowired
 	private StavkaPrometnogDokumentaService stavkaPrometnogDokumentaService;
 	
-	@GetMapping("")
+	@GetMapping
 	public ResponseEntity<Collection<Roba>> getAll() {
 		return new ResponseEntity<Collection<Roba>>(robaService.getAll(), HttpStatus.OK);
     }
@@ -41,27 +39,26 @@ public class RobaController{
     @PutMapping("/{id}")
     public ResponseEntity<?> update(@PathVariable("/id") Long id, @RequestBody Roba roba) {
         try {
-        	Roba roba = robaService.save(roba);
-            return new ResponseEntity<Roba>(roba, HttpStatus.OK);
+        	Roba robaUpdated = robaService.save(roba);
+            return new ResponseEntity<Roba>(robaUpdated, HttpStatus.OK);
         }
         catch (Exception e){
-            return new ResponseEntity<Roba>(e.getStackTrace(), HttpStatus.BAD_REQUEST);
+            return new ResponseEntity<>(e.getStackTrace(), HttpStatus.BAD_REQUEST);
         }
     }
       
-    @PostMapping("")
-    public ResponseEntity<Roba> add(@RequestBody Roba roba){
-    		Roba roba = robaService.save(roba);
-            return new ResponseEntity<Roba>(roba, HttpStatus.OK);
+    @PostMapping
+    public ResponseEntity<Roba> save(@RequestBody Roba roba){
+    		Roba robaSaved = robaService.save(roba);
+            return new ResponseEntity<Roba>(robaSaved, HttpStatus.OK);
     }
     
     @DeleteMapping("/{id}")
-    public ResponseEntity<> delete(@PathVariable("id") Long id) {
-    	Roba roba = robaService.getById(id);
+    public ResponseEntity<String> delete(@PathVariable("id") Long id) {
     	
     	try {
-    		robaService.delete(roba);
-    		return new ResponseEntity<>(roba, HttpStatus.OK);
+    		robaService.delete(id);
+    		return new ResponseEntity<>(HttpStatus.OK);
     	}
     	catch(Exception e) {
             return new ResponseEntity<>(HttpStatus.INTERNAL_SERVER_ERROR);

@@ -30,7 +30,7 @@ public class ${class.name}Controller{
 	private ${property.type?cap_first}Service ${property.type?uncap_first}Service;
 	</#list>
 	
-	@GetMapping("")
+	@GetMapping
 	public ResponseEntity<Collection<${class.name}>> getAll() {
 		return new ResponseEntity<Collection<${class.name}>>(${class.name?uncap_first}Service.getAll(), HttpStatus.OK);
     }
@@ -47,12 +47,12 @@ public class ${class.name}Controller{
             return new ResponseEntity<${class.name}>(${class.name?uncap_first}, HttpStatus.OK);
         }
         catch (Exception e){
-            return new ResponseEntity<${class.name}>(e.getStackTrace(), HttpStatus.BAD_REQUEST);
+            return new ResponseEntity<String>(e.getStackTrace(), HttpStatus.BAD_REQUEST);
         }
     }
       
-    @PostMapping("")
-    public ResponseEntity<${class.name}> add(@RequestBody ${class.name} ${class.name?uncap_first}){
+    @PostMapping
+    public ResponseEntity<${class.name}> save(@RequestBody ${class.name} ${class.name?uncap_first}){
     		${class.name} ${class.name?uncap_first} = ${class.name?uncap_first}Service.save(${class.name?uncap_first});
             return new ResponseEntity<${class.name}>(${class.name?uncap_first}, HttpStatus.OK);
     }
@@ -63,7 +63,7 @@ public class ${class.name}Controller{
     	
     	try {
     		${class.name?uncap_first}Service.delete(${class.name?uncap_first});
-    		return new ResponseEntity<>(${class.name?uncap_first}, HttpStatus.OK);
+    		return new ResponseEntity<>(HttpStatus.OK);
     	}
     	catch(Exception e) {
             return new ResponseEntity<>(HttpStatus.INTERNAL_SERVER_ERROR);

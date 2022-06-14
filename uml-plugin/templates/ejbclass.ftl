@@ -3,9 +3,9 @@ package ${class.typePackage};
 import javax.persistence.*;
 import java.util.*;
 import org.springframework.format.annotation.DateTimeFormat;
-<#list referencedProperties as property>
-import mbrs.tim9.enums.${property.type?cap_first};
-</#list>
+import mbrs.tim9.enums.JedinicaEnum;
+import mbrs.tim9.enums.KategorijaEnum;
+import mbrs.tim9.enums.VrstaDokumentaEnum;
 
 @Entity
 @Table

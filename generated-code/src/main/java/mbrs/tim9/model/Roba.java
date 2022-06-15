@@ -36,9 +36,8 @@ public class Roba {
     @OneToOne
     private MagacinskaKartica magacinskaKartica;
 
-    @ManyToMany
-    @JoinTable(name="dokument_roba")
-    private Set<StavkaPrometnogDokumenta> stavkaPrometnogDokumenta;
+    @OneToMany
+    private Set<StavkaPrometnogDokumenta> stavkePrometnogDokumenta;
 
     public Long getId(){
         return id;
@@ -82,11 +81,11 @@ public class Roba {
     public void setKategorija(KategorijaEnum kategorija){
         this.kategorija = kategorija;
     }
-    public Set<StavkaPrometnogDokumenta> getStavkaPrometnogDokumenta(){
-        return stavkaPrometnogDokumenta;
+    public Set<StavkaPrometnogDokumenta> getStavkePrometnogDokumenta(){
+        return stavkePrometnogDokumenta;
     }
-    public void setStavkaPrometnogDokumenta(Set<StavkaPrometnogDokumenta> stavkaPrometnogDokumenta){
-        this.stavkaPrometnogDokumenta = stavkaPrometnogDokumenta;
+    public void setStavkePrometnogDokumenta(Set<StavkaPrometnogDokumenta> stavkePrometnogDokumenta){
+        this.stavkePrometnogDokumenta = stavkePrometnogDokumenta;
     }
 
 }

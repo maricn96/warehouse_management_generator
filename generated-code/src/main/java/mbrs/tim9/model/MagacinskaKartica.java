@@ -33,14 +33,11 @@ public class MagacinskaKartica {
     private float ukupna_vrednost;
    
 
-    @ManyToMany
-    (
-        mappedBy = "magacinskeKartice"
-    )
-    private Set<StavkaPrometnogDokumenta> stavkaPrometnogDokumenta;
-
     @OneToOne
     private Roba roba;
+
+    @OneToMany
+    private Set<StavkaPrometnogDokumenta> stavkePrometnogDokumenta;
 
     public Long getId(){
         return id;
@@ -84,11 +81,11 @@ public class MagacinskaKartica {
     public void setUkupna_vrednost(float ukupna_vrednost){
         this.ukupna_vrednost = ukupna_vrednost;
     }
-    public Set<StavkaPrometnogDokumenta> getStavkaPrometnogDokumenta(){
-        return stavkaPrometnogDokumenta;
+    public Set<StavkaPrometnogDokumenta> getStavkePrometnogDokumenta(){
+        return stavkePrometnogDokumenta;
     }
-    public void setStavkaPrometnogDokumenta(Set<StavkaPrometnogDokumenta> stavkaPrometnogDokumenta){
-        this.stavkaPrometnogDokumenta = stavkaPrometnogDokumenta;
+    public void setStavkePrometnogDokumenta(Set<StavkaPrometnogDokumenta> stavkePrometnogDokumenta){
+        this.stavkePrometnogDokumenta = stavkePrometnogDokumenta;
     }
 
 }

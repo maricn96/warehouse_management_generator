@@ -28,16 +28,6 @@ public class StavkaPrometnogDokumenta {
     private VrstaPrometaEnum vrsta_prometa;
    
 
-    @ManyToMany
-    @JoinTable(name="dokument_kartica")
-    private Set<MagacinskaKartica> magacinskeKartice;
-
-    @ManyToMany
-    (
-        mappedBy = "stavkaPrometnogDokumenta"
-    )
-    private Set<Roba> roba;
-
     public Long getId(){
         return id;
     }
@@ -67,18 +57,6 @@ public class StavkaPrometnogDokumenta {
     }
     public void setVrsta_prometa(VrstaPrometaEnum vrsta_prometa){
         this.vrsta_prometa = vrsta_prometa;
-    }
-    public Set<MagacinskaKartica> getMagacinskeKartice(){
-        return magacinskeKartice;
-    }
-    public void setMagacinskeKartice(Set<MagacinskaKartica> magacinskeKartice){
-        this.magacinskeKartice = magacinskeKartice;
-    }
-    public Set<Roba> getRoba(){
-        return roba;
-    }
-    public void setRoba(Set<Roba> roba){
-        this.roba = roba;
     }
 
 }

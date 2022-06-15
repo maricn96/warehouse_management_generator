@@ -6,13 +6,13 @@ import org.springframework.web.bind.annotation.*;
 import org.springframework.http.ResponseEntity;
 import org.springframework.http.HttpStatus;
 import mbrs.tim9.model.MagacinskaKartica;
-import mbrs.tim9.model.StavkaPrometnogDokumenta;
 import mbrs.tim9.model.Roba;
+import mbrs.tim9.model.StavkaPrometnogDokumenta;
 import java.util.Collection;
 
 import mbrs.tim9.service.MagacinskaKarticaService;
-import mbrs.tim9.service.StavkaPrometnogDokumentaService;
 import mbrs.tim9.service.RobaService;
+import mbrs.tim9.service.StavkaPrometnogDokumentaService;
 
 @Controller
 @RequestMapping("/magacinskaKartica")
@@ -22,9 +22,9 @@ public class MagacinskaKarticaController{
 	private MagacinskaKarticaService magacinskaKarticaService;
 	
 	@Autowired
-	private StavkaPrometnogDokumentaService stavkaPrometnogDokumentaService;
-	@Autowired
 	private RobaService robaService;
+	@Autowired
+	private StavkaPrometnogDokumentaService stavkaPrometnogDokumentaService;
 	
 	@GetMapping
 	public ResponseEntity<Collection<MagacinskaKartica>> getAll() {

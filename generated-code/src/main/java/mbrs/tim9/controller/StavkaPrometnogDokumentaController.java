@@ -6,13 +6,9 @@ import org.springframework.web.bind.annotation.*;
 import org.springframework.http.ResponseEntity;
 import org.springframework.http.HttpStatus;
 import mbrs.tim9.model.StavkaPrometnogDokumenta;
-import mbrs.tim9.model.MagacinskaKartica;
-import mbrs.tim9.model.Roba;
 import java.util.Collection;
 
 import mbrs.tim9.service.StavkaPrometnogDokumentaService;
-import mbrs.tim9.service.MagacinskaKarticaService;
-import mbrs.tim9.service.RobaService;
 
 @Controller
 @RequestMapping("/stavkaPrometnogDokumenta")
@@ -21,10 +17,6 @@ public class StavkaPrometnogDokumentaController{
 	@Autowired
 	private StavkaPrometnogDokumentaService stavkaPrometnogDokumentaService;
 	
-	@Autowired
-	private MagacinskaKarticaService magacinskaKarticaService;
-	@Autowired
-	private RobaService robaService;
 	
 	@GetMapping
 	public ResponseEntity<Collection<StavkaPrometnogDokumenta>> getAll() {

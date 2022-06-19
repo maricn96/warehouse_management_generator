@@ -15,6 +15,10 @@ ${class.visibility} class ${class.name} {
     @Id
     @GeneratedValue(strategy=GenerationType.IDENTITY)
     ${property.visibility} ${property.type?cap_first} ${property.name?uncap_first};
+    
+    <#elseif property.type?lower_case?contains("enum")>
+    @Enumerated(EnumType.STRING)
+    ${property.visibility} ${property.type?cap_first} ${property.name?uncap_first};
 
    <#elseif property.type == "date" >
     @Column

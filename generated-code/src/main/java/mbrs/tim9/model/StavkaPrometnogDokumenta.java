@@ -13,7 +13,7 @@ public class StavkaPrometnogDokumenta {
     @Id
     @GeneratedValue(strategy=GenerationType.IDENTITY)
     private Long id;
-
+    
     @Column
     private Integer kolicina;
    
@@ -24,9 +24,9 @@ public class StavkaPrometnogDokumenta {
     @DateTimeFormat(pattern = "yyyy-MM-dd")
     private Date datum_i_vreme;
    
-    @Column
+    @Enumerated(EnumType.STRING)
     private VrstaPrometaEnum vrsta_prometa;
-   
+
 
     public Long getId(){
         return id;

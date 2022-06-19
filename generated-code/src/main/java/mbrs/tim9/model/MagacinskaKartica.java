@@ -13,7 +13,7 @@ public class MagacinskaKartica {
     @Id
     @GeneratedValue(strategy=GenerationType.IDENTITY)
     private Long id;
-
+    
     @Column
     private Integer promet_ulaza_kolicina;
    

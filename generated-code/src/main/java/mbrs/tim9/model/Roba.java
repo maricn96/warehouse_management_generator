@@ -13,7 +13,7 @@ public class Roba {
     @Id
     @GeneratedValue(strategy=GenerationType.IDENTITY)
     private Long id;
-
+    
     @Column
     private String naziv;
    
@@ -26,12 +26,12 @@ public class Roba {
     @Column
     private float cena;
    
-    @Column
+    @Enumerated(EnumType.STRING)
     private JedinicaEnum jedinica_mere;
-   
-    @Column
+
+    @Enumerated(EnumType.STRING)
     private KategorijaEnum kategorija;
-   
+
 
     @OneToOne
     private MagacinskaKartica magacinskaKartica;

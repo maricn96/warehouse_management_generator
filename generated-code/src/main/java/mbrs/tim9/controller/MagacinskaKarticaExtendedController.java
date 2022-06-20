@@ -18,7 +18,7 @@ import mbrs.tim9.service.MagacinskaKarticaExtendedService;
 public class MagacinskaKarticaExtendedController extends MagacinskaKarticaController {
 	
 	@Autowired
-	@Qualifier("magacinskaKarticaExtendedService")
+	@Qualifier("magacinskaKarticaExtendedServiceImpl")
 	private MagacinskaKarticaExtendedService magacinskaKarticaExtendedService;
 	
 	@PostMapping("/calculateTotal")

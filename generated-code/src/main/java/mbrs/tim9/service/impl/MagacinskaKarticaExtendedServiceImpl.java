@@ -9,7 +9,7 @@ import mbrs.tim9.repository.MagacinskaKarticaRepository;
 import mbrs.tim9.service.MagacinskaKarticaExtendedService;
 
 @Service
-@Qualifier("magacinskaKarticaExtendedService")
+@Qualifier("magacinskaKarticaExtendedServiceImpl")
 public class MagacinskaKarticaExtendedServiceImpl extends MagacinskaKarticaServiceImpl implements MagacinskaKarticaExtendedService {
 	
 	@Autowired

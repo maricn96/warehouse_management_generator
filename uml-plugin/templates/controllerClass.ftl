@@ -1,6 +1,7 @@
 package ${class.typePackage};
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.http.ResponseEntity;
@@ -21,10 +22,12 @@ import mbrs.tim9.service.${property.type?cap_first}Service;
 public class ${class.name}Controller{
 
 	@Autowired
+	@Qualifier("${class.name?uncap_first}ServiceImpl")
 	private ${class.name}Service ${class.name?uncap_first}Service;
 	
 	<#list referencedProperties as property>
 	@Autowired
+	@Qualifier("${property.type?uncap_first}ServiceImpl")
 	private ${property.type?cap_first}Service ${property.type?uncap_first}Service;
 	</#list>
 	
@@ -33,13 +36,13 @@ public class ${class.name}Controller{
 		return new ResponseEntity<Collection<${class.name}>>(${class.name?uncap_first}Service.getAll(), HttpStatus.OK);
     }
     
-    @GetMapping("/id")
-	public ResponseEntity<${class.name}> getById(@PathVariable("/id") Long id) {
+    @GetMapping("/{id}")
+	public ResponseEntity<${class.name}> getById(@PathVariable("id") Long id) {
 		return new ResponseEntity<${class.name}>(${class.name?uncap_first}Service.getById(id), HttpStatus.OK);
     }
     
     @PutMapping("/{id}")
-    public ResponseEntity<?> update(@PathVariable("/id") Long id, @RequestBody ${class.name} ${class.name?uncap_first}) {
+    public ResponseEntity<?> update(@PathVariable("id") Long id, @RequestBody ${class.name} ${class.name?uncap_first}) {
         try {
         	${class.name} ${class.name?uncap_first}Updated = ${class.name?uncap_first}Service.save(${class.name?uncap_first});
             return new ResponseEntity<${class.name}>(${class.name?uncap_first}Updated, HttpStatus.OK);

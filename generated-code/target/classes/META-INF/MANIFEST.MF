@@ -1,0 +1,11 @@
+Manifest-Version: 1.0
+Built-By: Nikola
+Build-Jdk: 15.0.1
+Implementation-Title: magacin_model1
+Implementation-Version: 0.0.1-SNAPSHOT
+Implementation-Vendor-Id: tim9
+Implementation-Vendor: Pivotal Software, Inc.
+Implementation-URL: https://spring.io/projects/spring-boot/magacin_model
+ 1
+Created-By: Maven Integration for Eclipse
+

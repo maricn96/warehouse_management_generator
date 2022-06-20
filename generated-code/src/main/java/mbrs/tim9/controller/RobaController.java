@@ -1,6 +1,7 @@
 package mbrs.tim9.controller;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.http.ResponseEntity;
@@ -19,11 +20,14 @@ import mbrs.tim9.service.StavkaPrometnogDokumentaService;
 public class RobaController{
 
 	@Autowired
+	@Qualifier("robaServiceImpl")
 	private RobaService robaService;
 	
 	@Autowired
+	@Qualifier("magacinskaKarticaServiceImpl")
 	private MagacinskaKarticaService magacinskaKarticaService;
 	@Autowired
+	@Qualifier("stavkaPrometnogDokumentaServiceImpl")
 	private StavkaPrometnogDokumentaService stavkaPrometnogDokumentaService;
 	
 	@GetMapping
@@ -31,13 +35,13 @@ public class RobaController{
 		return new ResponseEntity<Collection<Roba>>(robaService.getAll(), HttpStatus.OK);
     }
     
-    @GetMapping("/id")
-	public ResponseEntity<Roba> getById(@PathVariable("/id") Long id) {
+    @GetMapping("/{id}")
+	public ResponseEntity<Roba> getById(@PathVariable("id") Long id) {
 		return new ResponseEntity<Roba>(robaService.getById(id), HttpStatus.OK);
     }
     
     @PutMapping("/{id}")
-    public ResponseEntity<?> update(@PathVariable("/id") Long id, @RequestBody Roba roba) {
+    public ResponseEntity<?> update(@PathVariable("id") Long id, @RequestBody Roba roba) {
         try {
         	Roba robaUpdated = robaService.save(roba);
             return new ResponseEntity<Roba>(robaUpdated, HttpStatus.OK);

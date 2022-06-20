@@ -1,6 +1,7 @@
 package mbrs.tim9.service.impl;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Qualifier;
 import mbrs.tim9.repository.MagacinskaKarticaRepository;
 import org.springframework.stereotype.Service;
 import mbrs.tim9.service.MagacinskaKarticaService;
@@ -8,6 +9,7 @@ import mbrs.tim9.model.MagacinskaKartica;
 import java.util.Collection;
 
 @Service
+@Qualifier("magacinskaKarticaServiceImpl")
 public class MagacinskaKarticaServiceImpl implements MagacinskaKarticaService {
 
     @Autowired

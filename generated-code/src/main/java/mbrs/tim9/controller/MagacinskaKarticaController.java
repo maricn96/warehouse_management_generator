@@ -1,6 +1,7 @@
 package mbrs.tim9.controller;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.http.ResponseEntity;
@@ -19,11 +20,14 @@ import mbrs.tim9.service.StavkaPrometnogDokumentaService;
 public class MagacinskaKarticaController{
 
 	@Autowired
+	@Qualifier("magacinskaKarticaServiceImpl")
 	private MagacinskaKarticaService magacinskaKarticaService;
 	
 	@Autowired
+	@Qualifier("robaServiceImpl")
 	private RobaService robaService;
 	@Autowired
+	@Qualifier("stavkaPrometnogDokumentaServiceImpl")
 	private StavkaPrometnogDokumentaService stavkaPrometnogDokumentaService;
 	
 	@GetMapping
@@ -31,13 +35,13 @@ public class MagacinskaKarticaController{
 		return new ResponseEntity<Collection<MagacinskaKartica>>(magacinskaKarticaService.getAll(), HttpStatus.OK);
     }
     
-    @GetMapping("/id")
-	public ResponseEntity<MagacinskaKartica> getById(@PathVariable("/id") Long id) {
+    @GetMapping("/{id}")
+	public ResponseEntity<MagacinskaKartica> getById(@PathVariable("id") Long id) {
 		return new ResponseEntity<MagacinskaKartica>(magacinskaKarticaService.getById(id), HttpStatus.OK);
     }
     
     @PutMapping("/{id}")
-    public ResponseEntity<?> update(@PathVariable("/id") Long id, @RequestBody MagacinskaKartica magacinskaKartica) {
+    public ResponseEntity<?> update(@PathVariable("id") Long id, @RequestBody MagacinskaKartica magacinskaKartica) {
         try {
         	MagacinskaKartica magacinskaKarticaUpdated = magacinskaKarticaService.save(magacinskaKartica);
             return new ResponseEntity<MagacinskaKartica>(magacinskaKarticaUpdated, HttpStatus.OK);

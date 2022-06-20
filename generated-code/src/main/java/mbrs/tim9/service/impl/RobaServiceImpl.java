@@ -1,6 +1,7 @@
 package mbrs.tim9.service.impl;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Qualifier;
 import mbrs.tim9.repository.RobaRepository;
 import org.springframework.stereotype.Service;
 import mbrs.tim9.service.RobaService;
@@ -8,6 +9,7 @@ import mbrs.tim9.model.Roba;
 import java.util.Collection;
 
 @Service
+@Qualifier("robaServiceImpl")
 public class RobaServiceImpl implements RobaService {
 
     @Autowired

@@ -1,6 +1,7 @@
 package ${class.typePackage};
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Qualifier;
 import mbrs.tim9.repository.${class.name}Repository;
 import org.springframework.stereotype.Service;
 import mbrs.tim9.service.${class.name}Service;
@@ -8,6 +9,7 @@ import mbrs.tim9.model.${class.name};
 import java.util.Collection;
 
 @Service
+@Qualifier("${class.name?uncap_first}ServiceImpl")
 public class ${class.name}ServiceImpl implements ${class.name}Service {
 
     @Autowired

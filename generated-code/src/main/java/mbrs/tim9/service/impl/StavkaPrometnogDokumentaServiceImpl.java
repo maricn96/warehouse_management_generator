@@ -1,6 +1,7 @@
 package mbrs.tim9.service.impl;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Qualifier;
 import mbrs.tim9.repository.StavkaPrometnogDokumentaRepository;
 import org.springframework.stereotype.Service;
 import mbrs.tim9.service.StavkaPrometnogDokumentaService;
@@ -8,6 +9,7 @@ import mbrs.tim9.model.StavkaPrometnogDokumenta;
 import java.util.Collection;
 
 @Service
+@Qualifier("stavkaPrometnogDokumentaServiceImpl")
 public class StavkaPrometnogDokumentaServiceImpl implements StavkaPrometnogDokumentaService {
 
     @Autowired

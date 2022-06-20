@@ -1,6 +1,7 @@
 package mbrs.tim9.controller;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.http.ResponseEntity;
@@ -15,6 +16,7 @@ import mbrs.tim9.service.StavkaPrometnogDokumentaService;
 public class StavkaPrometnogDokumentaController{
 
 	@Autowired
+	@Qualifier("stavkaPrometnogDokumentaServiceImpl")
 	private StavkaPrometnogDokumentaService stavkaPrometnogDokumentaService;
 	
 	
@@ -23,13 +25,13 @@ public class StavkaPrometnogDokumentaController{
 		return new ResponseEntity<Collection<StavkaPrometnogDokumenta>>(stavkaPrometnogDokumentaService.getAll(), HttpStatus.OK);
     }
     
-    @GetMapping("/id")
-	public ResponseEntity<StavkaPrometnogDokumenta> getById(@PathVariable("/id") Long id) {
+    @GetMapping("/{id}")
+	public ResponseEntity<StavkaPrometnogDokumenta> getById(@PathVariable("id") Long id) {
 		return new ResponseEntity<StavkaPrometnogDokumenta>(stavkaPrometnogDokumentaService.getById(id), HttpStatus.OK);
     }
     
     @PutMapping("/{id}")
-    public ResponseEntity<?> update(@PathVariable("/id") Long id, @RequestBody StavkaPrometnogDokumenta stavkaPrometnogDokumenta) {
+    public ResponseEntity<?> update(@PathVariable("id") Long id, @RequestBody StavkaPrometnogDokumenta stavkaPrometnogDokumenta) {
         try {
         	StavkaPrometnogDokumenta stavkaPrometnogDokumentaUpdated = stavkaPrometnogDokumentaService.save(stavkaPrometnogDokumenta);
             return new ResponseEntity<StavkaPrometnogDokumenta>(stavkaPrometnogDokumentaUpdated, HttpStatus.OK);
